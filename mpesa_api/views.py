@@ -23,13 +23,13 @@ def lipa_na_mpesa_online(request):
         "Password": LipanaMpesaPpassword.decode_password,
         "Timestamp": LipanaMpesaPpassword.lipa_time,
         "TransactionType": "CustomerPayBillOnline",
-        "Amount": 1,
-        "PartyA": 254797584194,  # replace with your phone number to get stk push
+        "Amount": 10,
+        "PartyA": 254700011464, # replace with your phone number to get stk push
         "PartyB": LipanaMpesaPpassword.Business_short_code,
-        "PhoneNumber": 254797584194,  # replace with your phone number to get stk push
+        "PhoneNumber": 254700011464,# replace with your phone number to get stk push
         "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
         "AccountReference": "PaulWababu",
-        "TransactionDesc": "Testing stk push"
+        "TransactionDesc": "Donate to PaulWababu!"
     }
     response = requests.post(api_url, json=request, headers=headers)
     return HttpResponse('success')
@@ -40,8 +40,8 @@ def register_urls(request):
     headers = {"Authorization": "Bearer %s" % access_token}
     options = {"ShortCode": LipanaMpesaPpassword.Test_c2b_shortcode,
                "ResponseType": "Completed",
-               "ConfirmationURL": "https://1ea5bca6.ngrok.io/api/v1/c2b/confirmation",
-               "ValidationURL": "https://1ea5bca6.ngrok.io/api/v1/c2b/validation"}
+               "ConfirmationURL": "https://fa37b283.ngrok.io/api/v1/c2b/confirmation",
+               "ValidationURL": "https://fa37b283.ngrok.io/api/v1/c2b/validation"}
     response = requests.post(api_url, json=options, headers=headers)
     return HttpResponse(response.text)
 @csrf_exempt
