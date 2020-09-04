@@ -7,8 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import MpesaPayment
 
 def getAccessToken(request):
-    consumer_key = 'WKtrYFr35GVoI2fBWngoet2fs7T0KLa9'
-    consumer_secret = 'oUZYG6fQFVq4YO9z'
+    consumer_key = 'WKtrYFr35GVoI2fBWngoet2s7T0KLa9'
+    consumer_secret = 'oUZYG6fQFV4YO9z'
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
     r = requests.get(api_URL, auth=HTTPBasicAuth(consumer_key, consumer_secret))
     mpesa_access_token = json.loads(r.text)
@@ -24,9 +24,9 @@ def lipa_na_mpesa_online(request):
         "Timestamp": LipanaMpesaPpassword.lipa_time,
         "TransactionType": "CustomerPayBillOnline",
         "Amount": 10,
-        "PartyA": 254700011464, # replace with your phone number to get stk push
+        "PartyA": 2547011464, # replace with your phone number to get stk push
         "PartyB": LipanaMpesaPpassword.Business_short_code,
-        "PhoneNumber": 254700011464,# replace with your phone number to get stk push
+        "PhoneNumber": 2547011464,# replace with your phone number to get stk push
         "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
         "AccountReference": "PaulWababu",
         "TransactionDesc": "Donate to PaulWababu!"
